@@ -7,14 +7,15 @@ import sys
 input_file = sys.argv[1]
 output_file = sys.argv[2]
 
-print(input_file)
-
 frequency = {}
 document_text = open(input_file, 'r')
 text_string = document_text.read()
+
+# looking for matches
 match_pattern = re.findall(r'\b[a-zA-Z]{1,30}\b', text_string)
 print(len(match_pattern))
 match_pattern = [x.lower() for x in match_pattern]
+
 # populating dictionary
 for word in match_pattern:
     if word == '':
@@ -22,23 +23,13 @@ for word in match_pattern:
     count = frequency.get(word, 0)
     frequency[word] = count + 1
 
-# sorting the dictionary
+# sorting dictionary
 sorted_frequency = sorted(frequency.items())
-# print(sorted_frequency)
 
-
-frequency_list = frequency.keys()
-# print(frequency_list)
-
-# print(range(len(sorted_frequency)))
-
+# writing in output file
 f = open(output_file, "w+")
 for i in range(len(sorted_frequency)):
     index = i
-
     tuple = sorted_frequency[i]
-    #print("first: " + str(tuple[0]))
-    #print("second: " + str(tuple[1]))
-
     print(str(str(tuple[0])) + " " + str(tuple[1]))
     f.write(str(str(tuple[0])) + " " + str(tuple[1]) + "\n")
