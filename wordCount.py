@@ -1,9 +1,16 @@
 import re
 import string
 import operator
+import sys
+
+# storing bash input
+input_file = sys.argv[1]
+output_file = sys.argv[2]
+
+print(input_file)
 
 frequency = {}
-document_text = open('speech.txt', 'r')
+document_text = open(input_file, 'r')
 text_string = document_text.read()
 match_pattern = re.findall(r'\b[a-zA-Z]{1,30}\b', text_string)
 print(len(match_pattern))
@@ -25,7 +32,7 @@ frequency_list = frequency.keys()
 
 # print(range(len(sorted_frequency)))
 
-f = open("myOutput.txt", "w+")
+f = open(output_file, "w+")
 for i in range(len(sorted_frequency)):
     index = i
 
