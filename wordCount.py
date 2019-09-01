@@ -18,5 +18,7 @@ frequency_list = frequency.keys()
 
 f = open("myOutput.txt", "w+")
 for words in frequency_list:
-    toPrint = words, frequency[words]
-    print(toPrint)
+    w = words
+    num = frequency[words]
+    print("writing...")
+    f.write(str(w) + " " + str(num) + "\n")
